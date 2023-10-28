@@ -31,14 +31,18 @@ while True:
 
     # dot addition on edges of clock
     for i in range(2):
-        count_of_dots += 3
+        count_of_dots += 1
         if count_of_dots == 12:
             count_of_dots = 0
         dot_angle = Count_12[count_of_dots]
         x_d = int(radius_for_Hr_lable*np.cos(dot_angle)+center_x_y)
         y_d = int(radius_for_Hr_lable*np.sin(dot_angle)+center_x_y)
 
-        cv.circle(view,(x_d,y_d),8,(255,255,255),-2)
+        if count_of_dots == 0 or count_of_dots == 3 or count_of_dots == 6 or count_of_dots == 9:
+            cv.circle(view,(x_d,y_d),8,(255,255,255),-2)
+        else:
+            cv.circle(view,(x_d,y_d),4,(255,255,255),-2)
+
 
     # second
     sec = int(time.strftime("%S"))
